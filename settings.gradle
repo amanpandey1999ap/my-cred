@@ -13,4 +13,6 @@ dependencyResolutionManagement {
   }
 }
 rootProject.name = "My Cred"
-include ':app'
+include ':ui'
+include ':data'
+include ':domain'
