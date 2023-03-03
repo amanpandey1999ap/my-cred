@@ -1,4 +1,4 @@
-package com.aman.mycred
+package com.aman.mycred.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.aman.mycred.ui.screens.landing.LandingScreen
 import com.aman.mycred.ui.theme.MyCredTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,22 +20,9 @@ class MainActivity : ComponentActivity() {
       MyCredTheme {
         // A surface container using the 'background' color from the theme
         Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-          Greeting("Android")
+          LandingScreen()
         }
       }
     }
-  }
-}
-
-@Composable
-fun Greeting(name: String) {
-  Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-  MyCredTheme {
-    Greeting("Android")
   }
 }

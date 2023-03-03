@@ -1,5 +1,6 @@
 package com.aman.domain.di
 
+import com.aman.domain.models.CredUseCases
 import com.aman.domain.usecases.CreateCredUseCase
 import com.aman.domain.usecases.DeleteCredUseCase
 import com.aman.domain.usecases.ReadCredsUseCase
@@ -11,6 +12,8 @@ val DomainModule = module {
   single { ReadCredsUseCase(get()) }
   single { UpdateCredUseCase(get()) }
   single { DeleteCredUseCase(get()) }
+
+  single { CredUseCases(get(), get(), get(), get()) }
 }
 
 /*

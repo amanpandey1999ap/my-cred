@@ -20,7 +20,7 @@ interface CredentialsDao {
   @Update
   fun updateCred(dCred: DCredential)
 
-  @Query(value = "DELETE from cred_table")
-  fun deleteCred(CredId: Int)
+  @Query(value = "DELETE from cred_table WHERE :credId = id")
+  fun deleteCred(credId: Int)
 
 }
