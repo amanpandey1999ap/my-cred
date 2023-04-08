@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">My Cred</string>
+  <string name="message_empty_data_set">No credentials present in the database. Please add a new credential first.</string>
 </resources>

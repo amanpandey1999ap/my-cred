@@ -67,4 +67,7 @@ dependencies {
   def koin_version = "3.3.3"
   implementation("io.insert-koin:koin-android:$koin_version")
 
+  // Observables
+  implementation "androidx.compose.runtime:runtime-livedata:$compose_ui_version"
+
 }
