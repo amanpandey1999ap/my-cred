@@ -13,7 +13,7 @@ val DataModule = module {
       context = androidContext(),
       CredDatabase::class.java,
       name = "cred_db"
-    )
+    ).build()
   }
 
   single {
