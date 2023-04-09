@@ -1,4 +1,10 @@
 <resources>
   <string name="app_name">My Cred</string>
   <string name="message_empty_data_set">No credentials present in the database. Please add a new credential first.</string>
+  <string name="cd_add_cred">add credential</string>
+  <string name="back">Back</string>
+  <string name="desc_search_icon">search</string>
+  <string name="label_save">Save</string>
+  <string name="label_password">Enter Password</string>
+  <string name="label_select_cred_type">Select Credential Type</string>
 </resources>

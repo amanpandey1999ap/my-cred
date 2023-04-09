@@ -38,13 +38,25 @@ class HomeViewModel(
     fetchCredsFromDb()
   }
 
+  fun showCredsScreen() {
+    _viewState.postValue(ViewState.ShowHomeScreen(currStateHolder))
+  }
+  fun showAddCredentialScreen() {
+    _viewState.postValue(ViewState.ShowAddCredentialScreen(currStateHolder))
+  }
+
+  fun fetchCreds(): List<Credential> {
+    return currStateHolder.listOfCreds
+  }
+
   private fun fetchCredsFromDb() {
     executeInScope {
       credUseCases.readCredsUseCase().collect { listOfCreds ->
         if (listOfCreds.isNotEmpty()) {
           _viewState.value = ViewState.ShowHomeScreen(
             currStateHolder.copy(
-              credState = ResponseState.Success(data = listOfCreds)
+              credState = ResponseState.Success(data = listOfCreds),
+              listOfCreds = listOfCreds
             )
           )
         } else {
@@ -59,6 +71,14 @@ class HomeViewModel(
     }
   }
 
+  fun onSave(cred: Credential) {
+    executeInScope {
+      _viewState.value = ViewState.Loading(currStateHolder)
+      credUseCases.createCredUseCase(cred)
+      fetchCredsFromDb()
+    }
+  }
+
   sealed class ViewState {
     abstract val stateHolder: StateHolder
 
@@ -68,7 +88,8 @@ class HomeViewModel(
     data class ShowAddCredentialScreen(override val stateHolder: StateHolder) : ViewState()
 
     data class StateHolder(
-      val credState: ResponseState<List<Credential>> = ResponseState.Empty
+      val credState: ResponseState<List<Credential>> = ResponseState.Empty,
+      val listOfCreds: List<Credential> = emptyList()
     )
   }
 

@@ -51,8 +51,14 @@ class HomeActivity : ComponentActivity() {
 
   @Composable fun HomeViewModel.ViewState.BuildUI() {
     when (this) {
-      is ShowHomeScreen -> HomeScreen()
-      is ShowAddCredentialScreen -> AddCredentialScreen()
+      is ShowHomeScreen -> HomeScreen(
+        listOfCreds = homeVM.fetchCreds(),
+        onAddClicked = homeVM::showAddCredentialScreen
+      )
+      is ShowAddCredentialScreen -> AddCredentialScreen(
+        onBackPressed = homeVM::showCredsScreen,
+        onSaveClicked = homeVM::onSave
+      )
       is Loading -> LoadingScreen()
       else -> EmptyScreen()
     }
